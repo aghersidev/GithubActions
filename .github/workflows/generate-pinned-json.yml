@@ -55,16 +55,12 @@ jobs:
           GRAPHQL_RESPONSE=$(gh api graphql -f query="$QUERY" -f user="$GH_USER")
           
           echo "$GRAPHQL_RESPONSE" | jq '.data.user.pinnedItems.nodes' > repos_base.json
-
           FINAL_JSON="[]"
-          
           REPOS=$(jq -c '.[]' repos_base.json)
           
           for REPO_OBJECT in $REPOS; do
             REPO_NAME=$(echo "$REPO_OBJECT" | jq -r '.name')
-            
             LAST_PAGE_COMMIT_COUNT=$(curl -s -I -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/${GH_USER}/${REPO_NAME}/commits?per_page=1" | grep -i 'link:.*rel="last"' | sed -n 's/.*page=\([0-9]*\).*rel="last".*/\1/p')
-
             if [ -z "$LAST_PAGE_COMMIT_COUNT" ]; then
                 COMMIT_COUNT=0
             else
@@ -76,9 +72,7 @@ jobs:
                 commit_count: ($COMMITS | tonumber)
               }
             ')
-
             FINAL_JSON=$(echo "$FINAL_JSON" | jq --argjson REPO "$UPDATED_REPO" '. + [$REPO]')
-            
           done
           
           echo "$FINAL_JSON" | jq '[
@@ -97,12 +91,12 @@ jobs:
         run: |
           git config --global user.email "andres.ghersi@gmail.com"
           git config --global user.name "Andres Ghersi"
+          git add pinned_repos.json
           
-          if git diff --exit-code pinned_repos.json; then
-            echo "Pinned_repos.json has no changes. No commit done."
-          else
-            echo "pinned_repos.json changed. Commiting..."
-            git add pinned_repos.json
+          if git status --porcelain | grep pinned_repos.json; then
+            echo "pinned_repos.json created or changed. Committing and pushing..."
             git commit -m "Update pinned_repos.json"
             git push
+          else
+            echo "Pinned_repos.json has no changes. No commit done."
           fi
