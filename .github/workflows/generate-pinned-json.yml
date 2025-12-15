@@ -1,0 +1,91 @@
+name: Generate Pinned Repos JSON
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Install jq for JSON manipulation
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Get Pinned Repositories JSON
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER: aghersidev
+          QUERY: |
+            query($user: String!) {
+              user(login: $user) {
+                pinnedItems(first: 6, types: REPOSITORY) {
+                  nodes {
+                    ... on Repository {
+                      name
+                      url
+                      defaultBranchRef {
+                        target {
+                          ... on Commit {
+                            committedDate
+                          }
+                        }
+                      }
+                      object(expression: "HEAD") {
+                        ... on Commit {
+                          history(first: 100000) {
+                            totalCount
+                          }
+                        }
+                      }
+                      repositoryTopics(first: 10) {
+                        nodes {
+                          topic {
+                            name
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+        run: |
+          echo "GraphQL querying"
+          GRAPHQL_RESPONSE=$(curl -s -X POST \
+            -H "Authorization: bearer $GITHUB_TOKEN" \
+            -H "Content-Type: application/json" \
+            https://api.github.com/graphql \
+            --data "{\"query\":\"$(echo "$QUERY" | tr -d '\n' | sed 's/"/\\"/g')\", \"variables\":{\"user\":\"$GH_USER\"}}"
+          )
+
+          echo "Saving JSON"
+          echo "$GRAPHQL_RESPONSE" | jq '[
+            .data.user.pinnedItems.nodes[] | {
+              name: .name,
+              link: .url,
+              thumbnail_link: ("https://raw.githubusercontent.com/" + $GH_USER + "/" + .name + "/main/thumbnail.jpg"),
+              last_commit_date: .defaultBranchRef.target.committedDate,
+              commit_count: .object.history.totalCount,
+              topics: [.repositoryTopics.nodes[] | .topic.name]
+            }
+          ]' --arg GH_USER "$GH_USER" > pinned_repos.json
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.email "andres.ghersi@gmail.com"
+          git config --global user.name "Andres Ghersi"
+          
+          if git diff --exit-code pinned_repos.json; then
+            echo "Pinned_repos.json has no changes. No commit done."
+          else
+            echo "pinned_repos.json changed. Commiting..."
+            git add pinned_repos.json
+            git commit -m "Update pinned_repos.json"
+            git push
+          fi
