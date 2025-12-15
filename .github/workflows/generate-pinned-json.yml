@@ -65,6 +65,7 @@ jobs:
           )
 
           echo "Saving JSON"
+          echo "$GRAPHQL_RESPONSE"
           echo "$GRAPHQL_RESPONSE" | jq '[
             .data.user.pinnedItems.nodes[] | {
               name: .name,
