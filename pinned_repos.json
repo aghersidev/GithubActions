@@ -1,0 +1,56 @@
+[
+  {
+    "name": "home",
+    "link": "https://github.com/aghersidev/home",
+    "stars": 0,
+    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/home/main/thumbnail.jpg",
+    "last_commit_date": "2025-04-02T18:58:45Z",
+    "commit_count": 8,
+    "topics": []
+  },
+  {
+    "name": "Intellij_CDK_Linter",
+    "link": "https://github.com/aghersidev/Intellij_CDK_Linter",
+    "stars": 0,
+    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/Intellij_CDK_Linter/main/thumbnail.jpg",
+    "last_commit_date": "2025-11-25T21:39:23Z",
+    "commit_count": 1,
+    "topics": []
+  },
+  {
+    "name": "Angular_FrontEnd_SaaS",
+    "link": "https://github.com/aghersidev/Angular_FrontEnd_SaaS",
+    "stars": 0,
+    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/Angular_FrontEnd_SaaS/main/thumbnail.jpg",
+    "last_commit_date": "2025-12-15T01:19:50Z",
+    "commit_count": 8,
+    "topics": []
+  },
+  {
+    "name": "SpringBackEnd_SaaS",
+    "link": "https://github.com/aghersidev/SpringBackEnd_SaaS",
+    "stars": 0,
+    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/SpringBackEnd_SaaS/main/thumbnail.jpg",
+    "last_commit_date": "2025-12-11T01:51:42Z",
+    "commit_count": 5,
+    "topics": []
+  },
+  {
+    "name": "zig_nginx",
+    "link": "https://github.com/aghersidev/zig_nginx",
+    "stars": 0,
+    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/zig_nginx/main/thumbnail.jpg",
+    "last_commit_date": "2025-11-25T21:34:33Z",
+    "commit_count": 1,
+    "topics": []
+  },
+  {
+    "name": "GithubActions",
+    "link": "https://github.com/aghersidev/GithubActions",
+    "stars": 0,
+    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/GithubActions/main/thumbnail.jpg",
+    "last_commit_date": "2025-12-15T23:35:39Z",
+    "commit_count": 7,
+    "topics": []
+  }
+]
