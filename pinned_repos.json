@@ -2,37 +2,10 @@
   {
     "name": "home",
     "link": "https://github.com/aghersidev/home",
-    "stars": 1,
+    "stars": 0,
     "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/home/main/thumbnail.jpg",
-    "last_commit_date": "2026-01-04T22:01:41Z",
-    "commit_count": 22,
-    "topics": []
-  },
-  {
-    "name": "Intellij_CDK_Linter",
-    "link": "https://github.com/aghersidev/Intellij_CDK_Linter",
-    "stars": 0,
-    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/Intellij_CDK_Linter/main/thumbnail.jpg",
-    "last_commit_date": "2025-11-25T21:39:23Z",
-    "commit_count": 1,
-    "topics": []
-  },
-  {
-    "name": "Angular_FrontEnd_SaaS",
-    "link": "https://github.com/aghersidev/Angular_FrontEnd_SaaS",
-    "stars": 0,
-    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/Angular_FrontEnd_SaaS/main/thumbnail.jpg",
-    "last_commit_date": "2025-12-15T01:19:50Z",
-    "commit_count": 8,
-    "topics": []
-  },
-  {
-    "name": "SpringBackEnd_SaaS",
-    "link": "https://github.com/aghersidev/SpringBackEnd_SaaS",
-    "stars": 0,
-    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/SpringBackEnd_SaaS/main/thumbnail.jpg",
-    "last_commit_date": "2025-12-11T01:51:42Z",
-    "commit_count": 5,
+    "last_commit_date": "2026-01-09T21:47:34Z",
+    "commit_count": 27,
     "topics": []
   },
   {
@@ -45,12 +18,39 @@
     "topics": []
   },
   {
+    "name": "abtesting-landing-page",
+    "link": "https://github.com/aghersidev/abtesting-landing-page",
+    "stars": 0,
+    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/abtesting-landing-page/main/thumbnail.jpg",
+    "last_commit_date": "2026-01-10T22:20:50Z",
+    "commit_count": 4,
+    "topics": []
+  },
+  {
+    "name": "Kafka-Anomaly-Detection",
+    "link": "https://github.com/aghersidev/Kafka-Anomaly-Detection",
+    "stars": 0,
+    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/Kafka-Anomaly-Detection/main/thumbnail.jpg",
+    "last_commit_date": "2025-04-09T00:35:02Z",
+    "commit_count": 2,
+    "topics": []
+  },
+  {
     "name": "ontology-cart",
     "link": "https://github.com/aghersidev/ontology-cart",
     "stars": 0,
     "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/ontology-cart/main/thumbnail.jpg",
     "last_commit_date": "2026-01-04T02:44:01Z",
     "commit_count": 21,
+    "topics": []
+  },
+  {
+    "name": "Leetcode-Solutions",
+    "link": "https://github.com/aghersidev/Leetcode-Solutions",
+    "stars": 0,
+    "thumbnail_link": "https://raw.githubusercontent.com/aghersidev/Leetcode-Solutions/main/thumbnail.jpg",
+    "last_commit_date": "2025-05-28T03:37:23Z",
+    "commit_count": 99,
     "topics": []
   }
 ]
